@@ -10,6 +10,7 @@ public class CoinManager : MonoBehaviour
 
     [SerializeField] float offset = 2.5f;
     [SerializeField] int createCount = 16;
+    [SerializeField] int positionX = 4;
 
     private void Awake()
     {
@@ -27,14 +28,14 @@ public class CoinManager : MonoBehaviour
             clone.transform.SetParent(gameObject.transform);
 
             clone.transform.localPosition = new Vector3(0, prefab.transform.position.y, offset * i);
-
+            clone.SetActive(false);
             coins.Add(clone);
         }
     }
 
     public void InitializePosition()
     {
-
+        transform.localPosition = new Vector3(positionX * Random.Range(-1, 2), 0, 0);
     }
 
 }
